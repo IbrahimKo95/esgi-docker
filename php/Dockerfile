@@ -7,7 +7,5 @@ RUN docker-php-ext-enable mysqli pdo pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ENV PATH="$PATH:/usr/local/bin"
 
-RUN composer install
-RUN npm run build
-RUN php artisan key:generate
-RUN php artisan migrate:fresh --seed
+COPY entrypoint.sh /entrypoint.sh
+CMD ["/entrypoint.sh"]
