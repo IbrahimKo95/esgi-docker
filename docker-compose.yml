@@ -27,5 +27,17 @@ services:
         - 80:80
       volumes:
         - ./TP-Final-3IW-ESGI/:/var/www/html/
+  php:
+    build: php
+    ports:
+      - 9000:9000
+    volumes:
+      - ./TP-Final-3IW-ESGI/:/var/www/html/
+  php2:
+    build: php
+    ports:
+      - 9001:9000
+    volumes:
+      - ./TP-Final-3IW-ESGI-2/:/var/www/html/
 volumes:
     mysql-data:
