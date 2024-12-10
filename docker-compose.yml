@@ -21,12 +21,20 @@ services:
     ports:
       - 8089:80
     restart: always
-  nginx:
+  nginx1:
       image: nginx:latest
       ports:
         - 80:80
       volumes:
         - ./TP-Final-3IW-ESGI/:/var/www/html/
+        - ./nginx1/default.conf:/etc/nginx/sites-available/default
+  nginx2:
+      image: nginx:latest
+      ports:
+        - 81:80
+      volumes:
+        - ./TP-Final-3IW-ESGI-2/:/var/www/html/
+        - ./nginx2/default.conf:/etc/nginx/sites-available/default
   php:
     build: php
     ports:
