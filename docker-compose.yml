@@ -41,11 +41,18 @@ services:
       - 9000:9000
     volumes:
       - ./TP-Final-3IW-ESGI/:/var/www/html/
+    command: ["/bin/bash", "-c", "composer install && npm install && npm run build && php artisan key:generate && php artisan migrate:fresh --seed && php-fpm"]
+    depends_on:
+      - db
   php2:
     build: php
     ports:
       - 9001:9000
     volumes:
       - ./TP-Final-3IW-ESGI-2/:/var/www/html/
+    command: ["/bin/bash", "-c", "composer install && npm install && npm run build && php artisan key:generate && php artisan migrate:fresh --seed && php-fpm"]
+    depends_on:
+      - db
+      - php
 volumes:
     mysql-data:
